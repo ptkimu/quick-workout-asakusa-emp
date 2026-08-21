@@ -1,0 +1,508 @@
+<title>電磁パルス 骨盤底筋トレーニング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Jost:wght@300;400;500&display=swap">
+
+<style>
+:root{
+  --paper:#E9EBEE;
+  --card:#FFFFFF;
+  --card-2:#F4F5F7;
+  --ink:#151C26;
+  --ink-2:#4C596A;
+  --ink-3:#7C8899;
+  --rule:#D6DAE0;
+  --rule-2:#E7EAEE;
+  --ai:#22406F;
+  --ai-soft:#E4E9F3;
+  --beni:#B75A75;
+  --shu:#A83E28;
+  --shu-soft:#F8EAE6;
+
+  --hero-bg:#15263F;
+  --hero-bg-2:#1E3556;
+  --hero-ink:#F2F1EC;
+  --hero-ink-2:#A9BAD4;
+  --hero-accent:#E7A3B4;
+
+  --mincho:"Zen Old Mincho",serif;
+  --gothic:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+  --latin:"Jost",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#11151B; --card:#181D25; --card-2:#1F252E;
+    --ink:#E7EAEE; --ink-2:#A6B0BD; --ink-3:#76808D;
+    --rule:#2A313B; --rule-2:#232932;
+    --ai:#8FB0E8; --ai-soft:#182338;
+    --beni:#E6A0B2;
+    --shu:#EE9075; --shu-soft:#2E1912;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11151B; --card:#181D25; --card-2:#1F252E;
+  --ink:#E7EAEE; --ink-2:#A6B0BD; --ink-3:#76808D;
+  --rule:#2A313B; --rule-2:#232932;
+  --ai:#8FB0E8; --ai-soft:#182338;
+  --beni:#E6A0B2;
+  --shu:#EE9075; --shu-soft:#2E1912;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--gothic); font-size:16.5px; line-height:1.85;
+  -webkit-font-smoothing:antialiased; padding:0 18px 96px;
+}
+.wrap{max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:26px}
+p{margin:0}
+strong{font-weight:700}
+a{color:var(--ai)}
+:focus-visible{outline:2px solid var(--beni); outline-offset:3px}
+
+/* hero */
+.hero{
+  position:relative; overflow:hidden; margin-top:26px;
+  background:linear-gradient(160deg,var(--hero-bg) 0%,var(--hero-bg-2) 100%);
+  color:var(--hero-ink); padding:64px 40px 56px;
+}
+.pulse{position:absolute; inset:0; pointer-events:none}
+.pulse span{
+  position:absolute; left:80%; top:50%; width:150px; height:150px; margin:-75px 0 0 -75px;
+  border:1px solid var(--hero-accent); border-radius:50%; opacity:0;
+  animation:ripple 5.6s cubic-bezier(.22,.61,.36,1) infinite;
+}
+.pulse span:nth-child(2){animation-delay:1.85s}
+.pulse span:nth-child(3){animation-delay:3.7s}
+@keyframes ripple{
+  0%{transform:scale(.28); opacity:0}
+  18%{opacity:.5}
+  100%{transform:scale(3.6); opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .pulse span{animation:none; opacity:.2; transform:scale(1.6)}
+  .pulse span:nth-child(2){transform:scale(2.4)}
+  .pulse span:nth-child(3){transform:scale(3.2)}
+}
+.hero > *{position:relative}
+.eyebrow{
+  font-family:var(--latin); font-size:11.5px; font-weight:400;
+  letter-spacing:.34em; color:var(--hero-accent);
+}
+.hero h1{
+  font-family:var(--mincho); font-weight:700; margin:20px 0 0;
+  font-size:clamp(31px,6.2vw,48px); line-height:1.44; letter-spacing:.02em; text-wrap:balance;
+}
+.hero h1 em{font-style:normal; color:var(--hero-accent)}
+.hero .lead{margin-top:22px; color:var(--hero-ink-2); font-size:16.5px; max-width:30em}
+.spec{margin:34px 0 0; display:flex; flex-wrap:wrap; border-top:1px solid rgba(233,236,240,.22)}
+.spec div{padding:16px 26px 4px 0; margin-right:26px; border-right:1px solid rgba(233,236,240,.16)}
+.spec div:last-child{border-right:none; margin-right:0}
+.spec dt{font-family:var(--latin); font-size:10.5px; letter-spacing:.2em; color:var(--hero-ink-2)}
+.spec dd{margin:5px 0 0; font-family:var(--mincho); font-size:25px; font-weight:700; letter-spacing:.01em}
+.spec dd small{font-size:13px; font-family:var(--gothic); font-weight:400; margin-left:2px}
+.caution-link{
+  display:inline-block; margin-top:30px; font-size:13.5px; color:var(--hero-accent);
+  text-decoration:none; border-bottom:1px solid rgba(231,163,180,.45); padding-bottom:2px;
+}
+.caution-link:hover{border-bottom-color:var(--hero-accent)}
+
+/* sections */
+section{background:var(--card); border:1px solid var(--rule); padding:40px}
+.label{
+  font-family:var(--latin); font-size:10.5px; letter-spacing:.24em;
+  color:var(--ink-3); display:block; margin-bottom:12px;
+}
+h2{
+  font-family:var(--mincho); font-weight:700; margin:0 0 24px;
+  font-size:26px; line-height:1.52; letter-spacing:.02em; text-wrap:balance;
+}
+h3{font-size:16.5px; font-weight:700; margin:0 0 8px}
+.body{display:flex; flex-direction:column; gap:15px; color:var(--ink-2); max-width:62ch}
+.body strong{color:var(--ink)}
+.pull{
+  font-family:var(--mincho); font-size:20px; line-height:1.8; color:var(--ink);
+  border-left:2px solid var(--beni); padding-left:20px;
+}
+
+/* gains */
+.gains{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2)}
+.gains > div{background:var(--card); padding:22px 24px}
+.gains h3{font-size:15.5px; margin-bottom:5px; color:var(--ink)}
+.gains h3::before{content:""; display:inline-block; width:6px; height:6px; background:var(--beni); margin-right:9px; vertical-align:.22em}
+.gains p{font-size:14.5px; color:var(--ink-2); line-height:1.8}
+.gains .wide{grid-column:1 / -1}
+
+/* who */
+.who{display:grid; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2)}
+.who > div{background:var(--card); padding:24px 26px}
+.who h3{font-family:var(--mincho); font-size:19px; color:var(--ai); margin-bottom:6px}
+.who p{font-size:15px; color:var(--ink-2)}
+
+/* pace */
+.pace{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2)}
+.pace li{background:var(--card); padding:22px 24px}
+.pace .when{font-family:var(--latin); font-size:10.5px; letter-spacing:.2em; color:var(--ink-3); display:block; margin-bottom:9px}
+.pace .freq{font-family:var(--mincho); font-size:21px; font-weight:700; color:var(--ai); display:block; line-height:1.4}
+.pace .d{font-size:14.5px; color:var(--ink-2); display:block; margin-top:7px}
+
+/* steps */
+.steps{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:1px; background:var(--rule-2)}
+.steps li{background:var(--card); padding:20px 4px 20px 0; display:grid; grid-template-columns:46px 1fr; gap:14px; align-items:start}
+.steps .n{
+  font-family:var(--latin); font-size:13px; letter-spacing:.05em; font-weight:500;
+  width:30px; height:30px; display:grid; place-items:center; border-radius:50%;
+  border:1px solid var(--ai); color:var(--ai); margin-top:1px;
+}
+.steps li.pay .n{background:var(--ai); color:var(--card); border-color:var(--ai)}
+.steps .t{font-weight:700; font-size:16.5px; display:block}
+.steps .d{font-size:14.5px; color:var(--ink-2); margin-top:2px; display:block}
+.steps .tag{
+  display:inline-block; margin-top:9px; font-family:var(--latin); font-size:11px;
+  letter-spacing:.14em; color:var(--ink-3); border:1px solid var(--rule); padding:3px 9px;
+}
+.steps li.pay .tag{color:var(--ai); border-color:var(--ai); background:var(--ai-soft)}
+
+/* price */
+.price{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  background:var(--ai-soft); padding:26px 28px; margin-bottom:20px;
+}
+.price .amount{font-family:var(--mincho); font-size:52px; font-weight:700; line-height:1; color:var(--ai); font-variant-numeric:tabular-nums}
+.price .unit{font-size:15px; font-weight:700; color:var(--ai)}
+.price .per{font-size:14.5px; color:var(--ink-2)}
+.paylist{margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px}
+.paylist li{font-size:13px; border:1px solid var(--rule); padding:5px 12px; color:var(--ink-2)}
+.tbd{margin-top:18px; font-size:13.5px; color:var(--ink-3); border:1px dashed var(--rule); padding:12px 16px}
+
+/* caution */
+#caution{border-color:var(--shu); border-left-width:4px}
+#caution .label{color:var(--shu)}
+#caution h2{color:var(--shu)}
+.ng{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2)}
+.ng li{background:var(--shu-soft); padding:13px 16px; font-size:14.5px; display:flex; gap:10px; align-items:flex-start}
+.ng li::before{content:"\00d7"; color:var(--shu); font-weight:700; line-height:1.7}
+.ask{margin-top:18px; background:var(--card-2); padding:16px 20px; font-size:14.5px; color:var(--ink-2)}
+
+/* faq */
+.faq{display:flex; flex-direction:column; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2)}
+details{background:var(--card)}
+summary{
+  list-style:none; cursor:pointer; padding:17px 20px; font-weight:700; font-size:15.5px;
+  display:grid; grid-template-columns:22px 1fr 18px; gap:10px; align-items:start;
+}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"Q"; font-family:var(--latin); color:var(--beni); font-size:14px; letter-spacing:.05em}
+summary::after{content:"\ff0b"; color:var(--ink-3); font-size:13px; justify-self:end; line-height:1.9}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 20px 20px 52px; font-size:15px; color:var(--ink-2)}
+
+/* closing */
+.closing{background:var(--card); border:1px solid var(--rule); padding:44px 40px; text-align:center}
+.closing h2{font-size:23px; margin-bottom:16px}
+.closing p{color:var(--ink-2); font-size:15.5px; max-width:44ch; margin:0 auto}
+.closing .line{
+  margin-top:26px; display:inline-block; font-family:var(--latin); font-size:11px;
+  letter-spacing:.2em; color:var(--ink-3); border-top:1px solid var(--rule); padding-top:14px;
+}
+footer{font-size:12.5px; color:var(--ink-3); line-height:1.8; padding:0 4px}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{padding:48px 24px 44px}
+  section,.closing{padding:28px 22px}
+  h2{font-size:22px}
+  .ng,.gains,.pace{grid-template-columns:1fr}
+  .spec div{padding-right:20px; margin-right:20px}
+  .price .amount{font-size:44px}
+  details p{padding-left:20px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="pulse" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="eyebrow">QUICK WORKOUT ASAKUSA</div>
+  <h1>座ったまま、<br>自分では動かせない<em>奥の筋肉</em>へ。</h1>
+  <p class="lead">
+    電磁パルスの椅子に、服のまま座るだけ。ふだんの運動では狙いにくい骨盤底筋に、
+    体の外側から刺激を届けます。着替えも、うつ伏せも、スタッフの立ち会いもありません。
+  </p>
+  <dl class="spec">
+    <div><dt>TIME</dt><dd>15<small>分</small></dd></div>
+    <div><dt>PRICE</dt><dd>700<small>円</small></dd></div>
+    <div><dt>WEAR</dt><dd>着替えなし</dd></div>
+  </dl>
+  <a class="caution-link" href="#caution">ご利用いただけない方があります →</a>
+</header>
+
+<section>
+  <span class="label">WHAT IT IS</span>
+  <h2>骨盤底筋は、自分で動かすのがいちばん難しい筋肉です。</h2>
+  <div class="body">
+    <p>腕や脚とちがって、骨盤底筋は動かしている実感がほとんどありません。
+    「締めてください」と言われても、正しく力が入っているのか自分では確かめようがない。
+    だから多くの方が、鍛えたほうがいいと知りながら続けられずにいます。</p>
+
+    <p class="pull">電磁パルスは、その「わからなさ」を飛ばします。<br>座れば、体のほうが動きます。</p>
+
+    <p>この機械は磁力のパルスを体の深いところまで届け、
+    骨盤底筋を<strong>自分の意志とは関係なく収縮させます</strong>。
+    内側からトントンと軽く叩かれるような感覚があり、力の入れ方に迷う余地がありません。</p>
+
+    <p>骨盤底筋は体の土台にあたる筋肉です。ここが働くと、
+    <strong>姿勢が安定し、下腹まわりを内側から支える力が戻ります</strong>。
+    ジムでの運動と重ねると、支える側から効いてきます。</p>
+
+    <p>服を着たまま、椅子に座って15分。することは、それだけです。</p>
+  </div>
+</section>
+
+<section>
+  <span class="label">WHAT CHANGES</span>
+  <h2>この筋肉が働くと、体の何が変わるのか</h2>
+  <div class="body" style="margin-bottom:22px">
+    <p>骨盤底筋は、内臓を下から受け止めているハンモックのような筋肉です。
+    ここが使えるようになると、<strong>骨盤まわりだけでなく、体の使い方そのものが変わります</strong>。
+    以下は、骨盤底筋トレーニングについて一般に言われていることです。</p>
+  </div>
+  <div class="gains">
+    <div>
+      <h3>尿もれ・尿切れ</h3>
+      <p>咳やくしゃみ、ジャンプのときの尿もれは、排尿を支える筋肉がゆるんでいることと関係します。ここを鍛えることは、その予防としてよく挙げられます。</p>
+    </div>
+    <div>
+      <h3>姿勢と腰まわり</h3>
+      <p>体幹の底が抜けていると、上の筋肉が代わりに頑張ります。土台が安定すると姿勢が整い、腰の負担が減ります。</p>
+    </div>
+    <div>
+      <h3>下腹のライン</h3>
+      <p>内臓を正しい位置に保つ力が戻ると、下腹が内側から支えられます。腹筋運動では届きにくい部分です。</p>
+    </div>
+    <div>
+      <h3>呼吸の深さ</h3>
+      <p>骨盤底筋は横隔膜と上下で対になって動きます。底が動くようになると、呼吸が深く入りやすくなります。</p>
+    </div>
+    <div>
+      <h3>お通じ</h3>
+      <p>直腸を支える筋肉が働くと、いきむ力に頼らない排便につながると言われます。</p>
+    </div>
+    <div>
+      <h3>下半身の引き締まり</h3>
+      <p>お尻の筋肉や内ももと連動しているため、あわせて刺激が入ります。</p>
+    </div>
+    <div class="wide">
+      <h3>男性にも骨盤底筋はあります</h3>
+      <p>骨盤底筋は女性だけの筋肉ではありません。男性では、排尿後のキレや残尿感、骨盤まわりの血流と関わる部分として知られています。座って行うトレーニングなので、ジムの前後どちらでも組み込めます。</p>
+    </div>
+  </div>
+  <p class="tbd" style="border-style:solid">
+    ここに挙げたのは、骨盤底筋を鍛えることについて一般に言われている内容です。
+    症状の改善を目的とされる場合は、当店の設備ではなく医療機関にご相談ください。
+  </p>
+</section>
+
+<section>
+  <span class="label">WHO IT IS FOR</span>
+  <h2>こんな方に向いています</h2>
+  <div class="who">
+    <div>
+      <h3>産後の体を戻したい方</h3>
+      <p>出産で伸びた骨盤底筋は、放っておいても自然には戻りにくい部分です。赤ちゃんを抱えたままでは難しい自主トレの代わりに、座って15分。開始の時期は、健診で問題がないことを確認してからにしてください。</p>
+    </div>
+    <div>
+      <h3>一日中すわって仕事をする方</h3>
+      <p>長く座っているほど骨盤まわりは固まり、支える筋肉は使われなくなります。運動する時間がとれない方ほど、座ったままで完結するトレーニングが向いています。</p>
+    </div>
+    <div>
+      <h3>トレーニングを積んでいる方</h3>
+      <p>スクワットもプランクも、体幹の底が抜けていると力が逃げます。ジムのあとに15分足すだけで、ふだんの種目の効き方が変わります。</p>
+    </div>
+    <div>
+      <h3>40代からの男性</h3>
+      <p>骨盤底筋は男性にもある筋肉で、加齢とともにゆるみます。排尿のキレが気になりはじめた方、体幹の底から整えたい方に。座ったままなので、人目を気にせず取り組めます。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="label">HOW IT WORKS</span>
+  <h2>受付も、順番待ちも、いりません。</h2>
+  <div class="body" style="margin-bottom:22px">
+    <p>機械に貼ってあるQRコードをスマホで読み取って支払うと、電源が入ります。
+    あとはご自身でボタンを押して始めるだけ。終了時刻になると、電源は自動で切れます。</p>
+  </div>
+  <ol class="steps">
+    <li class="pay">
+      <span class="n">1</span>
+      <span>
+        <span class="t">機械のQRコードを読み取って支払う</span>
+        <span class="d">スマホのカメラで読み取り、その場でお支払いください。10秒ほどで電源が入ります。</span>
+        <span class="tag">スマホを使うのは、ここだけ</span>
+      </span>
+    </li>
+    <li>
+      <span class="n">2</span>
+      <span>
+        <span class="t">本体の丸いボタンを押す</span>
+        <span class="d">オレンジ色から青色に変わり、画面がつきます。</span>
+      </span>
+    </li>
+    <li>
+      <span class="n">3</span>
+      <span>
+        <span class="t">画面の「Pattern 2」を押す</span>
+        <span class="d">当店でお使いいただくのは、このひとつだけです。</span>
+      </span>
+    </li>
+    <li>
+      <span class="n">4</span>
+      <span>
+        <span class="t">「Strength」の ＋ で強さを上げる</span>
+        <span class="d">0から始まります。15あたりから体感が出ます。心地よいと感じるところまで、ご自身で上げてください（最大60）。ここを上げないと、何も起こりません。</span>
+      </span>
+    </li>
+    <li>
+      <span class="n">5</span>
+      <span>
+        <span class="t">▶ を押して、15分座っている</span>
+        <span class="d">時間の設定はそのままで大丈夫です。スマホを見ていても、本を読んでいてもかまいません。</span>
+      </span>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <span class="label">PRICE</span>
+  <h2>1回 15分</h2>
+  <div class="price">
+    <span class="amount">700</span>
+    <span class="unit">円（税込）</span>
+    <span class="per">／ 15分</span>
+  </div>
+  <div class="body" style="margin-bottom:18px">
+    <p>お支払いは、機械の前でのみ受け付けています。<strong>現金・回数券のご用意はありません。</strong>
+    もう少し続けたい方は、終了後にもう一度QRを読み取っていただければ、そのまま延長できます。</p>
+  </div>
+  <ul class="paylist">
+    <li>クレジットカード</li>
+    <li>Apple Pay</li>
+    <li>Google Pay</li>
+  </ul>
+  <!-- 未確定：ジムの予約枠に含めるか否かが決まり次第、下の一文を差し替えてください -->
+  <p class="tbd">［要確定］ジムのご予約枠との関係（枠内 ／ 枠外）を、決定後にここへ記載します。</p>
+</section>
+
+<section>
+  <span class="label">PACE</span>
+  <h2>1回で終わるものではありません</h2>
+  <div class="body" style="margin-bottom:22px">
+    <p>筋肉のトレーニングなので、<strong>変化は続けた回数についてきます</strong>。
+    はじめは間隔をつめて、慣れてきたら維持のペースに落とすのが一般的なやり方です。
+    1回ずつのお支払いなので、途中でやめても、間隔を空けても損はしません。</p>
+  </div>
+  <ol class="pace">
+    <li>
+      <span class="when">FIRST MONTH</span>
+      <span class="freq">週1〜2回 ／ 全4〜6回</span>
+      <span class="d">まずはここまで。ジムにいらした日に、続けて15分座るだけです。</span>
+    </li>
+    <li>
+      <span class="when">AFTER THAT</span>
+      <span class="freq">月1〜2回</span>
+      <span class="d">鍛えた状態を保つためのペース。使わなければ、筋肉はゆっくり戻ります。</span>
+    </li>
+  </ol>
+</section>
+
+<section id="caution">
+  <span class="label">IMPORTANT</span>
+  <h2>次に当てはまる方は、ご利用いただけません</h2>
+  <div class="body" style="margin-bottom:20px">
+    <p>電磁パルスは体の内部に作用します。<strong>ひとつでも当てはまる場合は、ご利用をお控えください。</strong></p>
+  </div>
+  <!-- 禁忌事項：取扱説明書の記載と必ず突き合わせてから公開してください（一般的な電磁パルス機器の条件で作成） -->
+  <ul class="ng">
+    <li>心臓ペースメーカーなど、体内に電子機器を入れている方</li>
+    <li>妊娠中の方、妊娠の可能性のある方</li>
+    <li>心臓に疾患のある方</li>
+    <li>悪性腫瘍の治療中・経過観察中の方</li>
+    <li>てんかんの既往がある方</li>
+    <li>血栓症、重い血行障害のある方</li>
+    <li>体内に金属（ボルト・避妊具など）がある方</li>
+    <li>手術後で、経過観察中の方</li>
+    <li>発熱・体調不良のある方</li>
+    <li>お腹や腰の皮膚に炎症・傷のある方</li>
+    <li>骨盤臓器脱の症状がある方</li>
+    <li>尿もれの症状で通院中の方</li>
+  </ul>
+  <p class="ask">通院中の方、お薬を飲んでいる方、生理中の方は、<strong>主治医にご確認のうえ</strong>ご利用ください。
+  ご利用中に痛みや強い不快感があるときは、すぐに停止してください。</p>
+  <p class="ask" style="margin-top:1px">当店の設備は、体を鍛えるためのものです。
+  <strong>すでに症状が出ていて、その改善を目的とされる場合は、婦人科・泌尿器科にご相談ください。</strong>
+  症状の程度によっては、こうしたトレーニングよりも適した治療があります。</p>
+</section>
+
+<section>
+  <span class="label">QUESTIONS</span>
+  <h2>よくあるご質問</h2>
+  <div class="faq">
+    <details>
+      <summary>痛くありませんか？</summary>
+      <p>強さは0からご自身で少しずつ上げていく方式です。内側からトントンと軽く叩かれるような感覚で、痛みを感じる強さまで上げる必要はありません。物足りなければ、途中でも上げられます。</p>
+    </details>
+    <details>
+      <summary>服は着たままでいいですか？</summary>
+      <p>着たままで大丈夫です。着替えも、下着を外す必要もありません。ジムのウェアのまま座っていただけます。厚手のアウターやベルトだけ外していただくと、より伝わりやすくなります。</p>
+    </details>
+    <details>
+      <summary>生理中でも使えますか？</summary>
+      <p>体調によります。出血量が多いとき、痛みが強いときは避けてください。ご心配な場合は、主治医にご確認ください。</p>
+    </details>
+    <details>
+      <summary>どのくらいで実感できますか？</summary>
+      <p>座っている間の体感は、その場でわかります。筋肉としての変化は続けた回数に比例しますので、週1〜2回を目安に、まずはひと月（4〜6回）続けてみてください。そのあとは月1〜2回で保てます。</p>
+    </details>
+    <details>
+      <summary>男性でも使えますか？</summary>
+      <p>使えます。骨盤底筋は男女ともにある筋肉です。服を着たまま座るだけなので、特別な準備はいりません。</p>
+    </details>
+    <details>
+      <summary>クリニックで受ける施術とは違うものですか？</summary>
+      <p>違います。当店にあるのは<strong>トレーニングのための設備</strong>で、医療行為ではありません。尿もれなどの症状をお持ちで治療をお考えの方は、婦人科・泌尿器科にご相談ください。</p>
+    </details>
+    <details>
+      <summary>スタッフの方はついていてくれますか？</summary>
+      <p>ご自身で操作していただく設備です。使い方は機械の正面に貼ってありますので、その通りにボタンを押していただければ始まります。わからないときは、遠慮なくお声がけください。</p>
+    </details>
+    <details>
+      <summary>ジムのトレーニングとどちらを先にすればいいですか？</summary>
+      <p>どちらでもかまいません。運動後のクールダウンとして座る方が多いです。</p>
+    </details>
+    <details>
+      <summary>1日に何回でも使えますか？</summary>
+      <p>続けて2回（30分）までを目安にしてください。それ以上は、翌日に筋肉痛のような重だるさが出ることがあります。</p>
+    </details>
+    <details>
+      <summary>支払ったのに動かないときは？</summary>
+      <!-- 未確定：公式LINE / WhatsApp のどちらを表に出すか決定後、連絡先を記載してください -->
+      <p>まず「Strength」が0のままになっていないかご確認ください。それでも動かない場合は［要確定：連絡先］までご連絡ください。ご利用いただけなかった分は返金いたします。</p>
+    </details>
+  </div>
+</section>
+
+<div class="closing">
+  <h2>ご予約は、いりません。</h2>
+  <p>ご来店のときに、機械の前でQRコードを読み取ってください。
+  そこから15分、座っているだけです。</p>
+  <div class="line">QUICK WORKOUT ASAKUSA</div>
+</div>
+
+<footer>
+  料金は税込です。当店の設備はトレーニング機器であり、医療機器ではありません。
+  本ページの内容は、疾患の治療・予防の効果を保証するものではなく、体感には個人差があります。<br>
+  体調に不安のある方、症状の改善を目的とされる方は、必ず医療機関にご相談ください。
+</footer>
+
+</div>
